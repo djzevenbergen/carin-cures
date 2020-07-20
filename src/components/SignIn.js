@@ -8,7 +8,7 @@ import SignUp from './SignUp';
 
 function SignIn() {
 
-  const [hidden, setHidden] = useState(false);
+  // const [hidden, setHidden] = useState(false);
 
   function doSignIn(event) {
     event.preventDefault();
@@ -52,7 +52,7 @@ function SignIn() {
           placeholder='Password' />
         <button type='submit'>Sign In</button>
       </form>
-      <button onClick={setHidden(true)}>Sign Up</button>
+      {/* <button onClick={setHidden(true)}>Sign Up</button> */}
 
       <h1>Sign Out</h1>
       <button onClick={doSignOut}>Sign Out</button>

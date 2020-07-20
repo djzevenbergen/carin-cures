@@ -20,9 +20,11 @@ const theme = {
 function App() {
 
   return (
+
+
     <Router>
       <ThemeProvider theme={theme}>
-        {/* <Header theme={theme} /> */}
+        <Header theme={theme} />
         <Switch>
           <Route path='/signin'>
             <SignIn />
