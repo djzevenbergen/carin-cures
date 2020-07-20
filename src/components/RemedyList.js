@@ -1,19 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import ReactDom from "react-dom";
 import { Redirect } from "react-router-dom";
-import SignUp from './SignUp';
+import SignUp from './auth/SignUp';
+import axios from "axios";
+import Remedy from "./Remedy";
 
 export default function RemedyList() {
-  // const [hidden, setLogin] = React.useState(false);
+  const [remedyList, setList] = useState(null);
+  const [favePage, goToFaves] = useState(false);
+
+  const likesPage = () => {
+    goToFaves(!favePage);
+  }
+
+  const apiCall = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/remedies`, {
+        headers: new Headers({
+          'Authorization': 'Bearer' + process.env.REACT_APP_API_KEY,
+          'Content-Type': 'application/json'
+        })
+      });
+      setList(response.data.remedies);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    apiCall()
+  }, [])
+
 
   return (
-    <React.Fragment>
-      {/* {hidden ? <Redirect to="/signin" /> : <h3></h3>} */}
 
-      <h1>Hi</h1>
-      {/* <button onClick={setLogin(true)}>Login page</button> */}
-    </React.Fragment>
 
-    // 
+    < React.Fragment >
+      {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} />) : ''}
+      < h1 > Hi</h1 >
+      <button onClick={likesPage} > Likes </button>
+      {favePage ? <Redirect to="/profile" /> : <h3></h3>}
+    </React.Fragment >
 
-  )
+
+  );
 }
+
+

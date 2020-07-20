@@ -1,8 +1,8 @@
-
+import Profile from './Profile';
 import React from 'react';
 import Header from './Header';
 import RemedyList from './RemedyList';
-import SignIn from './SignIn';
+import SignIn from './auth/SignIn';
 import moduleName from './RemedyList'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
@@ -31,6 +31,9 @@ function App() {
           </Route>
           <Route exact path='/'>
             <RemedyList />
+          </Route>
+          <Route path='/profile'>
+            <Profile />
           </Route>
         </Switch>
       </ThemeProvider>
