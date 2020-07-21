@@ -78,7 +78,7 @@ export default function RemedyList() {
 
     < React.Fragment >
       <div className="remedy-container">
-        {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} dragProp="list" canDelete={false} event={onLike} />) : ''}
+        {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} dragProp="list" canDelete={false} event={onLike} setremedyList={setList} />) : ''}
       </div>
       <button onClick={likesPage} > Likes </button>
       {favePage ? <Redirect to="/profile" /> : <h3></h3>}

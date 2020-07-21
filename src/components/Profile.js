@@ -26,6 +26,11 @@ export default function Profile() {
       });
   }
 
+  const setRemState = (state) => {
+    setremedyList(state);
+  }
+
+
   const unLike = (post) => {
     let neededId = ''
     let data = { liked: [] };
@@ -39,23 +44,21 @@ export default function Profile() {
         let temp = [];
         data.liked.forEach(likedPost => {
           if (likedPost.remedyId != post.remedyId) {
+            setremedyList([...temp, likedPost])
             temp.push(likedPost)
           }
           console.log("temp=>", temp);
-
-
+          if (temp <= 1) {
+            setremedyList([])
+          }
           return firestore.update({ collection: 'users', doc: neededId }, { liked: temp })
-
         })
-
       })
       .catch(function (error) {
 
         console.log("Error getting documents: ", error);
       });
-
   }
-
 
   useEffect(() => {
     setUser(auth.currentUser)
@@ -63,9 +66,12 @@ export default function Profile() {
   }, [auth])
 
   return (
-    <div>
-      {user ? (remedyList ? remedyList.map(remedy => <Remedy event={unLike} setremedyList={getLikeList} canDelete={true} remedy={remedy} dragProp="list" />) : "nothing to show")
-        : "please log in"}
-    </div>
+    <React.Fragment>
+
+      <div>
+        {user ? (remedyList ? remedyList.map(remedy => <Remedy event={unLike} setremedyList={setremedyList} canDelete={true} remedy={remedy} dragProp="list" />) : "nothing to show")
+          : "please log in"}
+      </div>
+    </React.Fragment>
   )
 }

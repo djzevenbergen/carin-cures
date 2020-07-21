@@ -21,7 +21,6 @@ export default function Remedy(props) {
       const dropResult = monitor.getDropResult()
       if (item && dropResult && dragProp === "list") {
         await event(remedy);
-        setremedyList()
         // create a new synth and route the output to master
         const synth = new t.MembraneSynth().toMaster();
         // play a note with the synth we setup
@@ -37,40 +36,6 @@ export default function Remedy(props) {
     console.log(auth.currentUser)
     setUser(auth.currentUser)
   }, [auth])
-
-  const unLike = (post) => {
-    let neededId = ''
-    let data = { liked: [] };
-    let haslikedPost = false;
-    firestore.collection("users").where("userId", "==", user.uid).get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          neededId = doc.id
-          data = doc.data()
-        });
-        let temp = [];
-        data.liked.forEach(likedPost => {
-          if (likedPost.remedyId != post.remedyId) {
-            temp.push(likedPost)
-          }
-          console.log("temp=>", temp);
-
-
-          return firestore.update({ collection: 'users', doc: neededId }, { liked: temp })
-
-        })
-
-      })
-      .catch(function (error) {
-
-        console.log("Error getting documents: ", error);
-      });
-
-  }
-
-
-
-
 
 
   return (
