@@ -3,27 +3,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDh6xhgNiXDeKt__z_RiQtyTSe2Hl3Z7kM",
-    authDomain: "carin-cures.firebaseapp.com",
-    databaseURL: "https://carin-cures.firebaseio.com",
-    projectId: "carin-cures",
-    storageBucket: "carin-cures.appspot.com",
-    messagingSenderId: "829479356795",
-    appId: "1:829479356795:web:33872e27116b80f93b15de"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-
 In the project directory, you can run:
 
 ### `npm start`
