@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.remedy-container{
+ min-height: 90vh;
+ width: 100vw;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-evenly;
+ align-content: space-around;
+ align-items: center;
+}
+
+.remedy-box{
+  border: 2px solid navy;
+  width: 20%;
+  margin: 1rem;
+  height: 40vh;
+  display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
+ align-content: space-around;
+ align-items: center;
+ box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.692);
+
+}
+.target{
+  width: 200px;
+  height: 200px;
+  background-color: gray;
+}

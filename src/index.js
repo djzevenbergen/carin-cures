@@ -13,6 +13,8 @@ import firebase from "./firebase";
 import 'firebase/auth';
 import middlewareLogger from './middleware/middleware-logger';
 import thunkMiddleware from 'redux-thunk';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, middlewareLogger));
 
@@ -30,10 +32,12 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
+        <DndProvider backend={HTML5Backend}>
+          <App />
+        </DndProvider>
       </ReactReduxFirebaseProvider>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode >
   ,
   document.getElementById('root')
 );

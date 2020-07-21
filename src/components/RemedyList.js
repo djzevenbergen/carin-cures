@@ -33,8 +33,9 @@ export default function RemedyList() {
   return (
 
     < React.Fragment >
-      {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} />) : ''}
-      < h1 > Hi</h1 >
+      <div className="remedy-container">
+        {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} />) : ''}
+      </div>
       <button onClick={likesPage} > Likes </button>
       {favePage ? <Redirect to="/profile" /> : <h3></h3>}
     </React.Fragment >
