@@ -14,7 +14,7 @@ export default function Remedy(props) {
     setUser(auth.currentUser)
   }, [auth])
 
-  const onLike = (postId) => {
+  const onLike = (post) => {
     let neededId = ''
     let data;
     firestore.collection("users").where("userId", "==", user.uid).get()
@@ -23,7 +23,7 @@ export default function Remedy(props) {
           neededId = doc.id
           data = doc.data()
         });
-        return firestore.update({ collection: 'users', doc: neededId }, { liked: [...data.liked, postId] })
+        return firestore.update({ collection: 'users', doc: neededId }, { liked: [...data.liked, post] })
       })
       .catch(function (error) {
         console.log("Error getting documents: ", error);
@@ -33,7 +33,7 @@ export default function Remedy(props) {
   return (
     <div>
       <h2>{remedy.name}</h2>
-      {user != null ? <button onClick={() => onLike(remedy.remedyId)}>Like</button> : ''}
+      {user != null ? <button onClick={() => onLike(remedy)}>Like</button> : ''}
     </div>
   )
 }

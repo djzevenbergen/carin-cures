@@ -30,9 +30,7 @@ export default function RemedyList() {
     apiCall()
   }, [])
 
-
   return (
-
 
     < React.Fragment >
       {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} />) : ''}
@@ -40,7 +38,6 @@ export default function RemedyList() {
       <button onClick={likesPage} > Likes </button>
       {favePage ? <Redirect to="/profile" /> : <h3></h3>}
     </React.Fragment >
-
 
   );
 }
