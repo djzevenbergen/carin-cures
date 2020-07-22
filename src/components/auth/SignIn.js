@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import firebase from 'firebase/app';
-import PropTypes from "prop-types";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { useHistory, Link } from 'react-router-dom';
-import { render } from "@testing-library/react";
-import SignUp from './SignUp';
+import { Redirect } from 'react-router-dom';
 import { message } from 'antd'
+import SignUp from "./SignUp";
 
 function SignIn() {
 
   const [hidden, setHidden] = useState(false);
+  const [signup, setSignup] = useState(false);
 
   function doSignIn(event) {
     event.preventDefault();
@@ -24,7 +22,7 @@ function SignIn() {
   }
 
   function onClick() {
-    setHidden(!hidden);
+    setSignup(!hidden);
   }
 
 
@@ -37,10 +35,9 @@ function SignIn() {
   }
 
   return (
-    <React.Fragment>
+    <div className="main-container">
 
-      {hidden ? <Redirect to="/profile" /> : <h3></h3>}
-
+      {hidden ? <Redirect to="/profile" /> : ''}
       <h1>Sign In</h1>
       <form onSubmit={doSignIn}>
         <input
@@ -54,10 +51,10 @@ function SignIn() {
         <button type='submit'>Sign In</button>
       </form>
       <button onClick={onClick}>Sign Up</button>
-
+      {signup ? <SignUp /> : ''}
       <h1>Sign Out</h1>
       <button onClick={doSignOut}>Sign Out</button>
-    </React.Fragment>
+    </div>
   );
 
 }

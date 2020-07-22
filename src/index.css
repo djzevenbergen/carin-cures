@@ -16,6 +16,7 @@ code {
  width: 100vw;
  display: flex;
  flex-wrap: wrap;
+ padding: 1rem
 
 }
 
@@ -30,12 +31,18 @@ code {
  align-content: space-around;
  align-items: center;
  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.692);
+ backdrop-filter: blur(10px);
+ background-color: rgba(0, 0, 0, 0.192);  
+ color: white;
 
 }
 .remedy-box p{
   margin: 1rem;
- 
-
+  text-align:justify ;
+}
+.remedy-box h2, .remedy-box h3{
+  color: white;
+  -webkit-text-stroke: .3px black;
 }
 .plus{
   width: 10vh;
@@ -63,4 +70,11 @@ code {
   width: 100vw;
   height: 10vh;
   background-color: rgb(201, 201, 201);
+}
+.main-container{
+  min-height: 90vh;
+  width: 100vw;
+  background-image: url('https://i.pinimg.com/originals/03/17/54/0317549ebf5cc4fa008f5a1a695d6d54.jpg');
+  background-size: cover;
+  position: relative;
 }

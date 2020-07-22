@@ -3,9 +3,8 @@ import React from 'react';
 import Header from './Header';
 import RemedyList from './RemedyList';
 import SignIn from './auth/SignIn';
-import moduleName from './RemedyList'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import 'antd/dist/antd.css';
 

@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDom from "react-dom";
-import { Redirect } from "react-router-dom";
-import SignUp from './auth/SignUp';
 import axios from "axios";
 import Remedy from "./Remedy";
 import { useFirestore } from 'react-redux-firebase';
@@ -77,17 +74,17 @@ export default function RemedyList() {
 
   return (
 
-    < React.Fragment >
+    <div className="main-container">
       <div className="remedy-container">
         <div className="remedy-box">
           <Plus plus={true} />
           <p>Drag and drop remedies to add to your list</p>
         </div>
-        {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} dragProp="list" canDelete={false} event={onLike} setremedyList={setList} />) : ''}
+        {remedyList ? remedyList.map((remedy, i) => <Remedy key={i} remedy={remedy} dragProp="list" canDelete={false} event={onLike} setremedyList={setList} />) : ''}
       </div>
       <button onClick={likesPage} > Likes </button>
-      {favePage ? <Redirect to="/profile" /> : <h3></h3>}
-    </React.Fragment >
+
+    </div >
 
   );
 }
