@@ -7,6 +7,7 @@ import Remedy from "./Remedy";
 import { useFirestore } from 'react-redux-firebase';
 import firebase from 'firebase/app';
 import { message } from "antd";
+import Plus from "./Plus"
 
 export default function RemedyList() {
   const [remedyList, setList] = useState(null);
@@ -78,6 +79,10 @@ export default function RemedyList() {
 
     < React.Fragment >
       <div className="remedy-container">
+        <div className="remedy-box">
+          <Plus plus={true} />
+          <p>Drag and drop remedies to add to your list</p>
+        </div>
         {remedyList ? remedyList.map(remedy => <Remedy remedy={remedy} dragProp="list" canDelete={false} event={onLike} setremedyList={setList} />) : ''}
       </div>
       <button onClick={likesPage} > Likes </button>

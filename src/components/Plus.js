@@ -1,6 +1,11 @@
 import React from 'react'
 import { useDrop } from 'react-dnd'
-export default function Target() {
+
+
+
+
+export default function Target(props) {
+  const { plus } = props;
   //dnd start
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: "remedy",
@@ -10,14 +15,25 @@ export default function Target() {
       canDrop: monitor.canDrop(),
     }),
   })
-  const isActive = canDrop && isOver
-  let backgroundColor = '#222'
+  let style = {}
 
+
+
+  const isActive = canDrop && isOver
+  let backgroundColor;
+  if (isActive) {
+    backgroundColor = 'darkgreen'
+
+  } else if (canDrop) {
+    backgroundColor = 'darkkhaki'
+    style = {
+      transform: "rotate(360deg)"
+    }
+  }
   //dnd end
   return (
     <div>
-      <div className="target" ref={drop} >
-        {isActive ? 'Release to drop' : 'Drag a box here'}
+      <div className={plus ? "plus" : "minus"} ref={drop} style={{ ...style, backgroundColor }} >
       </div>
     </div>
   )

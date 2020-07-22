@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/app';
 import Remedy from './Remedy';
+import Plus from './Plus';
 import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
 import RemedyList from './RemedyList';
+import { Redirect } from 'react-router-dom'
 import { message } from 'antd'
 
 export default function Profile() {
@@ -62,13 +64,19 @@ export default function Profile() {
 
   useEffect(() => {
     setUser(auth.currentUser)
-    getLikeList();
+    if (auth.currentUser) {
+      getLikeList();
+    }
   }, [auth])
 
   return (
     <React.Fragment>
-
-      <div>
+      {/* //{auth.currentUser ? "" : <Redirect to="/signin" />} */}
+      <div className="remedy-container">
+        <div className="remedy-box">
+          <Plus plus={false} />
+          <p>Drag and drop remedies to remove from your list</p>
+        </div>
         {user ? (remedyList ? remedyList.map(remedy => <Remedy event={unLike} setremedyList={setremedyList} canDelete={true} remedy={remedy} dragProp="list" />) : "nothing to show")
           : "please log in"}
       </div>
