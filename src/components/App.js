@@ -1,10 +1,12 @@
 import Profile from './Profile';
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import RemedyList from './RemedyList';
+import firebase from "firebase/app";
 import SignIn from './auth/SignIn';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { UserContext } from './userContext';
 
 import 'antd/dist/antd.css';
 
@@ -17,12 +19,15 @@ const theme = {
 };
 
 function App() {
+  const [value, setValue] = useState("not logged in")
+
 
   return (
 
 
     <Router>
-      <ThemeProvider theme={theme}>
+      <UserContext.Provider value={{ value, setValue }}>
+
         <Header theme={theme} />
         <Switch>
           <Route path='/signin'>
@@ -35,8 +40,8 @@ function App() {
             <Profile />
           </Route>
         </Switch>
-      </ThemeProvider>
-    </Router>
+      </UserContext.Provider>
+    </Router >
   );
 }
 

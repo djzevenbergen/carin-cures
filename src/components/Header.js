@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom"
 import firebase from 'firebase/app';
+import { UserContext } from './userContext';
 
 export default function Header() {
+  const { value, setValue } = useContext(UserContext);
   const auth = firebase.auth();
   const [user, setUser] = useState(null);
+
+  if (auth.currentUser) {
+    setValue(auth.currentUser);
+  }
 
   //dnd end
   useEffect(() => {
@@ -15,7 +21,7 @@ export default function Header() {
   return (
     <>
       <div className="header">
-        <p id="username"></p>
+        {value ? <p>{value.email}</p> : <p>Not logged in</p>}
         <Link to="/signin">Sign in</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/">Home</Link>

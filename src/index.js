@@ -15,6 +15,7 @@ import middlewareLogger from './middleware/middleware-logger';
 import thunkMiddleware from 'redux-thunk';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import MyProvider from './context'
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, middlewareLogger));
 
@@ -31,11 +32,13 @@ const rrfProps = {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <DndProvider backend={HTML5Backend}>
-          <App />
-        </DndProvider>
-      </ReactReduxFirebaseProvider>
+      <MyProvider>
+        <ReactReduxFirebaseProvider {...rrfProps}>
+          <DndProvider backend={HTML5Backend}>
+            <App />
+          </DndProvider>
+        </ReactReduxFirebaseProvider>
+      </MyProvider>
     </Provider>
   </React.StrictMode >
   ,

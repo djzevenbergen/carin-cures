@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import firebase from 'firebase/app';
 import { Redirect } from 'react-router-dom';
 import { message } from 'antd'
 import SignUp from "./SignUp";
+import { UserContext } from '../userContext'
 
 function SignIn() {
 
   const [hidden, setHidden] = useState(false);
   const [signup, setSignup] = useState(false);
+  const { value, setValue } = useContext(UserContext);
 
   function doSignIn(event) {
     event.preventDefault();
@@ -16,8 +18,9 @@ function SignIn() {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
       message.success("you signed in");
       setHidden(!hidden);
-      let usernameTag = document.getElementById("username");
-      usernameTag.innerHTML = usernameTag.innerHTML.replace("", email);
+      setValue(firebase.auth().currentUser);
+      // let usernameTag = document.getElementById("username");
+      // usernameTag.innerHTML = usernameTag.innerHTML.replace("", email);
     }).catch(function (error) {
       message.error(error.message);
     });
@@ -30,8 +33,9 @@ function SignIn() {
   function doSignOut() {
     firebase.auth().signOut().then(function () {
       console.log("Successfully signed out!");
-      let usernameTag = document.getElementById("username");
-      usernameTag.innerHTML = "";
+      setValue(null);
+      // let usernameTag = document.getElementById("username");
+      // usernameTag.innerHTML = "";
     }).catch(function (error) {
       console.log(error.message);
     });
