@@ -29,7 +29,6 @@ export default function Remedy(props) {
   })
   //dnd end
   useEffect(() => {
-    console.log(auth.currentUser)
     setUser(auth.currentUser)
   }, [auth])
 

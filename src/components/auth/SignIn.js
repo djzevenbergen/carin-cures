@@ -16,6 +16,8 @@ function SignIn() {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
       message.success("you signed in");
       setHidden(!hidden);
+      let usernameTag = document.getElementById("username");
+      usernameTag.innerHTML = usernameTag.innerHTML.replace("", email);
     }).catch(function (error) {
       message.error(error.message);
     });
@@ -29,6 +31,8 @@ function SignIn() {
   function doSignOut() {
     firebase.auth().signOut().then(function () {
       console.log("Successfully signed out!");
+      let usernameTag = document.getElementById("username");
+      usernameTag.innerHTML = "";
     }).catch(function (error) {
       console.log(error.message);
     });

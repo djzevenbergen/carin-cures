@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import firebase from 'firebase/app';
 import { useFirestore } from 'react-redux-firebase';
-import PropTypes from "prop-types";
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { useHistory, Link } from 'react-router-dom';
-import { render } from "@testing-library/react";
+import { Redirect } from 'react-router-dom';
 import { message } from 'antd'
 
 
@@ -34,7 +31,7 @@ function SignUp() {
 
   return (
     <>
-      {hidden ? <h1></h1> : <Redirect to="/" />}
+      {hidden ? '' : <Redirect to="/" />}
       <h1>Sign up</h1>
       <form onSubmit={doSignUp}>
         <input

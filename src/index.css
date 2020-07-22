@@ -16,7 +16,8 @@ code {
  width: 100vw;
  display: flex;
  flex-wrap: wrap;
- padding: 1rem
+ padding: 1rem;
+ justify-content: center;
 
 }
 
@@ -24,7 +25,7 @@ code {
   border: 2px solid navy;
   width: 20%;
   margin: 1rem;
-  height: 40vh;
+  min-height: 40vh;
   display: flex;
  flex-direction: column;
  justify-content: space-evenly;
@@ -34,10 +35,10 @@ code {
  backdrop-filter: blur(10px);
  background-color: rgba(0, 0, 0, 0.192);  
  color: white;
-
+ padding: 1rem;
+ text-align: center;
 }
 .remedy-box p{
-  margin: 1rem;
   text-align:justify ;
 }
 .remedy-box h2, .remedy-box h3{
