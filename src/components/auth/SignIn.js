@@ -27,7 +27,6 @@ function SignIn() {
     setSignup(!hidden);
   }
 
-
   function doSignOut() {
     firebase.auth().signOut().then(function () {
       console.log("Successfully signed out!");
